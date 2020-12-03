@@ -1,0 +1,29 @@
+{
+  "name": "todo-back",
+  "version": "1.0.0",
+  "description": "Aplicação de avaliação full-stack de SCOM Unesp 2020 Back End",
+  "main": "index.js",
+  "scripts": {
+    "start": "node config/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioaletroca/todo-back.git"
+  },
+  "author": "Caio Troti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioaletroca/todo-back/issues"
+  },
+  "homepage": "https://github.com/caioaletroca/todo-back#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.12",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.6",
+    "objection": "^2.2.3"
+  }
+}
