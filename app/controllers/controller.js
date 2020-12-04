@@ -1,13 +1,19 @@
 "use strict";
 
-const Response = require('../utils');
+const { Response } = require('../utils');
 
-module.exports = app => {
-    this.action = async (req, res, action) => {
+module.exports = function(app) {
+    /**
+     * Wraps all controller calls with JS error handling
+     * @param {*} req
+     * @param {*} res
+     * @param {*} action
+     */
+    this.action = async function (req, res, action) {
         try {
-            return await action(req, res, new Response());
+            await action(req, res, new Response());
         } catch (e) {
-
+            return;
         }
     }
     

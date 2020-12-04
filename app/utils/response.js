@@ -31,7 +31,14 @@ Response.prototype.setData = function (data) {
     return this;
 }
 
-Response.prototype.send = function () {
+Response.prototype.send = function (res) {
+    if(res) 
+        return res.status(this.code).send({
+            ok: this.ok,
+            message: this.message,
+            data: this.data
+        });
+    
     return JSON.stringify({
         ok: this.ok,
         code: this.code,

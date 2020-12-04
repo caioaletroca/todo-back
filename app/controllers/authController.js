@@ -2,6 +2,10 @@
 
 module.exports = {
     register: async (req, res, apiResponse) => {
-        apiResponse.send();        
+        apiResponse.send(res);
+    },
+
+    login: async (req, res, apiResponse) => {
+        
     }
 }

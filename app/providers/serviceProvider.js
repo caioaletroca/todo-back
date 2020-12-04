@@ -10,10 +10,10 @@ module.exports = function (app) {
         // Parse params
         const params = controller.split('@');
 
-        // Get instance
+        // Gets the target controller instance
         const instance = this.app.controllers[params[0]];
 
-        // Return new method
+        // Wraps the controller on a base action method
         return async (req, res) =>
             await Controller.action(req, res, instance[params[1]]);
     }
@@ -25,12 +25,14 @@ module.exports = function (app) {
      * @param {array} mids 
      * @param {string} params 
      */
-    this.parseMethod = function (method, path, mids, params) {
-        // Instanciate controller
-        const controller = this.createController(params);
+    this.parseMethod = function (method, path, mids, ctlr) {
+        // Instantiate controller
+        const controller = this.createController(ctlr);
 
         // Register path
         this.app[method](path, mids, controller);
+
+        return this;
     }
 
     /**

@@ -4,7 +4,7 @@ exports.up = function(knex) {
     table.bigIncrements('id');
     table.bigInteger('user_id').unsigned().index();
     table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
-    table.string('name');
+    table.string('name', 100);
     table.boolean('is_completed').defaultsTo(0);
     table.timestamps();
   });
