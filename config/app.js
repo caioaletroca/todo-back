@@ -15,12 +15,14 @@ app.use(cors());
 
 // Load middlewares
 consign({
-	verbose: true,
+    verbose: true,
+    cwd: 'app'
 })
-// .then("app/controllers")
+.then("controllers")
 // .then("app/middlewares")
 // .then("app/helpers")
-.then("app/routes")
+.then("providers")
+.include("routes")
 .into(app)
 
 app.listen(process.env.PORT, function () {
