@@ -1,5 +1,7 @@
-module.exports = app => {
-    app.post('/login', (req, res) => {
-        res.send('deu bom');
-    })
+"use strict";
+
+module.exports = function (app) {
+    app.providers.serviceProvider((app, route) => {
+        route.post('/login', [], 'authController@register');
+    }); 
 }
