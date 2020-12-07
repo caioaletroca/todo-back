@@ -1,13 +1,14 @@
 // Update with your config settings.
+require("./app/helpers/envHelper");
 
 module.exports = {
     local: {
       client: 'mysql',
       connection: {
-        host: '127.0.0.1',
-        database: 'todounesp',
-        user:     'root',
-        password: 'fema1997'
+        host: process.env.DATABASE_HOST,
+        database: process.env.DATABASE_NAME,
+        user:     process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD
       },
       pool: {
         min: 2,
@@ -22,9 +23,9 @@ module.exports = {
       client: 'mysql',
       version: '5.6',
       connection: {
-        database: 'todounesp',
-        user:     'root',
-        password: 'fema1997'
+        database: process.env.DATABASE_NAME,
+        user:     process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD
       },
       pool: {
         min: 2,
