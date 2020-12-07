@@ -4,7 +4,8 @@
   "description": "Aplicação de avaliação full-stack de SCOM Unesp 2020 Back End",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon node config/app.js"
+    "start": "nodemon node config/app.js",
+    "migrate": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
