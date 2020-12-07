@@ -13,5 +13,9 @@ module.exports = function (app) {
 
     app.providers.serviceProvider((app, route) => {
         route.get('/auth', [ isAuthorized ], 'authController@getAuth')
-    })
+    });
+
+    app.providers.serviceProvider((app, route) => {
+        route.put('/auth', [ isAuthorized ], 'authController@update')
+    });
 }

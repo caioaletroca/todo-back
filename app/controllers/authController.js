@@ -35,5 +35,10 @@ module.exports = {
 
     async getAuth(req, res, apiResponse) {
         apiResponse.setData(req.auth).send(res);
+    },
+
+    async update(req, res, apiResponse) {
+        const user = await req.auth.$query().patchAndFetch(req.body);
+        apiResponse.setData(user).send(res);
     }
 }
