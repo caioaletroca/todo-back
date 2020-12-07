@@ -1,6 +1,8 @@
 "use strict";
 
+const { Model } = require('objection');
 const BaseModel = require('./BaseModel');
+const hashHelper = require('../helpers/hashHelper');
 
 class User extends BaseModel {
     constructor () {
@@ -15,6 +17,24 @@ class User extends BaseModel {
     // Table name is the only required property.
     static get tableName() {
         return "users";
+    }
+
+    async $beforeInsert(opt, queryContext) {
+        // Hash the password
+        if (this.password) {
+          this.password = await hashHelper.hash(this.password);
+        }
+    
+        await super.$beforeInsert(opt, queryContext);
+    }
+
+    async $beforeUpdate(opt, queryContext) {
+        // Hash the password
+        if (this.password) {
+          this.password = await hashHelper.hash(this.password);
+        }
+    
+        await super.$beforeUpdate(opt, queryContext);
     }
 
     // Optional JSON schema. This is not the database schema!

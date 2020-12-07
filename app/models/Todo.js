@@ -1,5 +1,6 @@
 "use strict";
 
+const { Model } = require('objection');
 const BaseModel = require('./BaseModel');
 
 class Todo extends BaseModel {
@@ -16,19 +17,13 @@ class Todo extends BaseModel {
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["name", "login", "password"],
+            required: ["user_id", "name"],
 
             properties: {
                 id: { type: "integer" },
+                user_id: { type: "integer" },
                 name: { type: "string", maxLength: 100 },
-                login: { type: "string", maxLength: 50 },
-                password: {
-                    type: "string",
-                    minLength: 8,
-                    maxLength: 50,
-                    pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[\\s\\S\\d]*$"
-                },
-                token: { type: "string" },
+                is_completed: { type: "bool" },
 
                 // Timestamps
                 created_at: { type: "date" },
