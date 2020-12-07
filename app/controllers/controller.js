@@ -13,7 +13,7 @@ module.exports = function(app) {
         try {
             await action(req, res, new Response());
         } catch (e) {
-            return;
+            return new Response().setCode(400).setMessage(e.message).send(res);
         }
     }
     

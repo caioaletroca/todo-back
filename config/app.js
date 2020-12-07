@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors')
 const dotenv = require('dotenv');
 const consign = require('consign');
+require('../app/helpers/envHelper');
+require('../app/helpers/dbHelper');
 
 // Instantiate server
 const app = express();
@@ -19,8 +21,8 @@ consign({
     cwd: 'app'
 })
 .then("controllers")
-// .then("app/middlewares")
-// .then("app/helpers")
+.then("middlewares")
+.then("helpers")
 .then("providers")
 .include("routes")
 .into(app)
